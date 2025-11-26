@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clone do Dashboard Concured</title>
+    <link rel="stylesheet" href="./css/desh.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="conteiner-geral">
+        
+        <aside class="barra-lateral">
+            <div class="logo-area">
+                <div class="icone-logo"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <h1>Concured</h1>
+            </div>
+
+            <nav class="menu-navegacao">
+                <ul>
+                    <li class="item-menu ativo">
+                        <div class="indicador-lateral"></div>
+                        <a href="#"><i class="fa-solid fa-house"></i> Overview</a>
+                    </li>
+                    <li class="item-menu"><a href="#"><i class="fa-solid fa-fire"></i> Opportunities</a></li>
+                    <li class="item-menu"><a href="#"><i class="fa-solid fa-user"></i> My competitors</a></li>
+                    <li class="item-menu"><a href="#"><i class="fa-solid fa-file-lines"></i> Briefs</a></li>
+                    <li class="item-menu"><a href="#"><i class="fa-solid fa-bookmark"></i> Saved</a></li>
+                </ul>
+            </nav>
+
+            <div class="menu-inferior">
+                <ul>
+                    <li class="item-menu"><a href="#"><i class="fa-solid fa-gear"></i> Settings</a></li>
+                    <li class="item-menu"><a href="#"><i class="fa-solid fa-circle-question"></i> Help</a></li>
+                    <li class="item-menu logout"><a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="area-principal">
+            
+            <header class="cabecalho">
+                <div class="lado-esquerdo">
+                    <div class="dropdown-time">
+                        <div class="icone-time"><i class="fa-solid fa-layer-group"></i></div>
+                        <span>Boro team</span>
+                        <i class="fa-solid fa-caret-down setinha"></i>
+                    </div>
+                    <button class="botao-adicionar"><i class="fa-solid fa-plus"></i></button>
+                </div>
+
+                <div class="lado-direito">
+                    <div class="perfil-usuario">
+                        <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                        <span>Zahra hasht..</span>
+                        <i class="fa-solid fa-caret-down setinha"></i>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-corpo">
+                
+                <div class="area-titulo">
+                    <div class="titulo-texto">
+                        <h2>Poroject statistic</h2> <i class="fa-solid fa-circle-question icone-ajuda"></i>
+                    </div>
+                    <div class="filtros-tempo">
+                        <button class="botao-filtro ativo">30 days</button>
+                        <button class="botao-filtro">90 days</button>
+                        <button class="botao-filtro">6 monts</button> <button class="botao-filtro">12 monts</button>
+                    </div>
+                </div>
+
+                <div class="grid-superior">
+                    
+                    <div class="cartao cartao-grafico-grande">
+                        <div class="cabecalho-cartao">
+                            <h3>Total visits</h3>
+                            <span class="numero-destaque">42,43M</span>
+                        </div>
+                        <div class="area-canvas-grande">
+                            <canvas id="graficoVisitas"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="grid-mini-cartoes">
+                        
+                        <div class="cartao cartao-gradiente">
+                            <div class="topo-cartao">
+                                <div class="icone-fundo-claro"><i class="fa-solid fa-chart-simple"></i></div>
+                            </div>
+                            <div class="conteudo-meio">
+                                <h3>42,34%</h3>
+                                <p>Bounce Rate</p>
+                            </div>
+                            <div class="badge-verde"><i class="fa-solid fa-caret-up"></i> 12%</div>
+                            <i class="fa-solid fa-circle-question icone-flutuante"></i>
+                        </div>
+
+                        <div class="cartao cartao-branco">
+                            <div class="icone-box roxo"><i class="fa-solid fa-calendar"></i></div>
+                            <div class="info-central">
+                                <h3>42,34%</h3>
+                                <p>Pages per visit</p>
+                            </div>
+                            <i class="fa-solid fa-circle-question icone-flutuante-cinza"></i>
+                        </div>
+
+                        <div class="cartao cartao-branco">
+                            <div class="icone-box roxo-claro"><i class="fa-solid fa-user"></i></div>
+                            <div class="info-esquerda">
+                                <h3>326.60K</h3>
+                                <p>Total Monthly Visit</p>
+                            </div>
+                            <div class="badge-vermelho"><i class="fa-solid fa-caret-down"></i> 2,1%</div>
+                        </div>
+
+                        <div class="cartao cartao-branco">
+                            <div class="icone-box roxo-claro"><i class="fa-solid fa-hourglass-half"></i></div>
+                            <div class="info-esquerda">
+                                <h3>00:03:27</h3>
+                                <p>Avg.Visit Duration</p>
+                            </div>
+                            <div class="badge-vermelho"><i class="fa-solid fa-caret-down"></i> 2,4%</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="grid-inferior">
+                    
+                    <div class="cartao cartao-trafego">
+                        <h3>Traffic Sources</h3>
+                        <div class="conteudo-trafego">
+                            <div class="tabela-legenda">
+                                <div class="linha-cabecalho">
+                                    <span>sourse</span>
+                                    <span>Traffic sourse,%</span>
+                                </div>
+                                <div class="linha-item">
+                                    <div class="nome-fonte"><span class="ponto azul"></span> Direct</div>
+                                    <div class="valor-fonte">50</div>
+                                </div>
+                                <div class="linha-item">
+                                    <div class="nome-fonte"><span class="ponto roxo"></span> Search</div>
+                                    <div class="valor-fonte">50</div>
+                                </div>
+                            </div>
+                            <div class="area-grafico-donut">
+                                <canvas id="graficoDonut1"></canvas>
+                                <div class="texto-centro-donut">
+                                    <h4>50%</h4>
+                                    <small>Direct</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cartao cartao-trafego">
+                        <h3>Traffic Sources</h3>
+                        <div class="conteudo-trafego">
+                            <div class="tabela-legenda">
+                                <div class="linha-cabecalho">
+                                    <span>sourse</span>
+                                    <span>Traffic sourse,%</span>
+                                </div>
+                                <div class="linha-item">
+                                    <div class="nome-fonte"><span class="ponto azul"></span> Direct</div>
+                                    <div class="valor-fonte">50</div>
+                                </div>
+                                <div class="linha-item">
+                                    <div class="nome-fonte"><span class="ponto roxo"></span> Search</div>
+                                    <div class="valor-fonte">50</div>
+                                </div>
+                            </div>
+                            <div class="area-grafico-donut">
+                                <canvas id="graficoDonut2"></canvas>
+                                <div class="texto-centro-donut">
+                                    <h4>50%</h4>
+                                    <small>Direct</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        // Configuração do Gráfico de Linha (Chart.js)
+        const ctxLinha = document.getElementById('graficoVisitas').getContext('2d');
+        
+        // Gradiente para a linha (opcional, mas dá um toque bonito)
+        const gradienteLinha = ctxLinha.createLinearGradient(0, 0, 0, 400);
+        gradienteLinha.addColorStop(0, 'rgba(134, 140, 255, 0.5)');
+        gradienteLinha.addColorStop(1, 'rgba(134, 140, 255, 0.0)');
+
+        new Chart(ctxLinha, {
+            type: 'line',
+            data: {
+                labels: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                datasets: [{
+                    label: 'Visitors',
+                    data: [25, 22, 35, 24, 38, 25], // Dados simulados para fazer a curva da imagem
+                    borderColor: '#8C52FF', // Roxo parecido com a imagem
+                    backgroundColor: gradienteLinha,
+                    borderWidth: 4,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#8C52FF',
+                    pointBorderWidth: 3,
+                    pointRadius: 0, // Esconde os pontos normais
+                    pointHoverRadius: 8,
+                    tension: 0.4, // Deixa a linha curva (spline)
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#1B2559', // Fundo preto/azul escuro
+                        titleColor: '#fff',
+                        bodyColor: '#fff',
+                        padding: 12,
+                        cornerRadius: 8,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(context) {
+                                return 'Visitors: 24,000,033';
+                            },
+                            title: function() {
+                                return ''; // Remove título do tooltip
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 40,
+                        ticks: {
+                            color: '#A3AED0',
+                            callback: function(value) {
+                                if(value === 0) return '0';
+                                return value + ',000,000'; // Simula os milhões
+                            }
+                        },
+                        grid: {
+                            color: '#F3F6FF',
+                            drawBorder: false
+                        },
+                        border: { display: false }
+                    },
+                    x: {
+                        grid: {
+                            color: '#F3F6FF',
+                            drawBorder: false
+                        },
+                        ticks: { color: '#A3AED0' },
+                        border: { display: false }
+                    }
+                }
+            }
+        });
+
+        // Configuração Comum para os Donuts
+        const dadosDonut = {
+            labels: ['Direct', 'Search'],
+            datasets: [{
+                data: [50, 50],
+                backgroundColor: ['#6AD2FF', '#D68BFD'], // Ciano e Roxo
+                hoverOffset: 4,
+                borderWidth: 0,
+                cutout: '75%', // Espessura do donut
+                borderRadius: 20
+            }]
+        };
+
+        const opcoesDonut = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: { enabled: false }
+            }
+        };
+
+        // Renderizar Donut 1
+        new Chart(document.getElementById('graficoDonut1'), {
+            type: 'doughnut',
+            data: dadosDonut,
+            options: opcoesDonut
+        });
+
+        // Renderizar Donut 2
+        new Chart(document.getElementById('graficoDonut2'), {
+            type: 'doughnut',
+            data: dadosDonut,
+            options: opcoesDonut
+        });
+    </script>
+</body>
+</html>
