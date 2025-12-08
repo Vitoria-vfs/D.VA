@@ -101,7 +101,7 @@ btn-after {
 }
 /* SESSÃO DVA */
 .section{
-    background-image: url(img_projeto/□\ ･\ ﾟ_\ _•□.jpeg);
+    background-image: url(../img_projeto/fundo.jpeg);
 
     padding:0px 0%;
 
@@ -123,14 +123,14 @@ btn-after {
     width:350px;
 }
 .dva-area p{
-    width:50%;
-    font-size:23px;
-    line-height:1.6;
+    width:70%;
+    font-size:30px;
+    line-height:1.2;
 }
 .saiba-btn{
     position: relative;
     display:inline-block;
-    margin-top:20px;
+    margin-top:37px;
     padding:10px 25px;
     border:2px solid #ff79c6;
     color:#ffffff;
@@ -144,30 +144,38 @@ btn-after {
 
 
 /* SOBRE MIM  */
-.sobre h1 {
+.sobre-conteudo h1 {
     display: flex;
     flex-direction:column;
     position: relative;
-    bottom: 600px;
+    padding: 50px;
     text-align: center;
     font-size: 70px;
     color: #ff9be9;
     text-shadow: 0 0 10px #ff79c6;
 }
 .sobre-conteudo {
+    background-image: url(../img_projeto/WALLPAPER.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
     align-items: center;
     justify-content: space-between;
+    height: 100vh;
+    
 }
-.sobre-texto {
-    width: 50%;
-}
-.sobre-texto p {
-    margin-left: 86px;
+
+.sobre-conteudo p {
+    display: flex;
+    /* margin-left: 31px; */
     position: relative;
-    bottom: 523px;
-    font-size: 20px;
+    /* bottom: 554px; */
+    font-size: 31px;
     line-height: 1.6;
     color: #fff;
+    text-align: center;
+    flex-wrap: nowrap;
+    padding: 40px;
 }
 .sobre-img img {
     width: 0px;
@@ -175,15 +183,20 @@ btn-after {
 }
 .saiba-btn1{
     position: relative;
-    bottom: 490px;
-    left: 80px;
+    /* bottom: 547px; */
+    left: 567px;
     display:inline-block;
-    margin-top:20px;
-    padding:20px 35px;
+    margin-top:24px;
+    padding:24px 44px;
     border:2px solid #ff79c6;
     color:#ffffff;
     border-radius:8px;
     transition:.3s;
+}
+
+.saiba-btn1:hover{
+    background:#ff79c6;
+    color:#000;
 }
 
 /* GAMEPLAYS */
@@ -195,26 +208,33 @@ btn-after {
     width: 12px;
     
 }
-.gameplays h1{
+#gameplaysH1{
+    display: flex;
+    justify-content: center;
     font-size:70px;
     color:#ff9be9;
     text-shadow:0 0 10px #ff79c6;
-    position: fixed;
+    /* position: fixed; */
 }
 .galeria{
     margin-top:40px;
-    display:flex;justify-content:center;
+    display:flex;
+    justify-content:center;
     gap:20px;
+    width: 180vw;
+    height: 80vh;
+    overflow-x: visible;
+    scroll-behavior: smooth;
 }
-.galeria img{
-    width:30%;
-    border-radius:10px;
-    border:2px solid #ff79c6;
+
+.galeria video{
+    width: 100%;
+    height: 80%;
 }
 
 /* FOOTER */
 footer{
-    margin-top:80px;
+    margin-top:20px;
     padding:40px;
     text-align:center;
     background:#000000aa;
@@ -222,4 +242,15 @@ footer{
 }
 footer p{
     margin:5px 0;
+}
+
+.carousel-caption {
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    padding: 18px 90px;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.35;
 }

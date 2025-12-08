@@ -1,0 +1,106 @@
+body {
+    background: linear-gradient(135deg, #ffd6f6, #f1bfff);
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+#pontuacaoEJogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+button {
+    background-color: #ff7edb;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: #ff5ccf;
+    transform: scale(1.05);
+}
+
+#pontuacao, #jogo {
+    background: white;
+    border-radius: 20px;
+    padding: 20px 30px;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
+    border: 3px solid #ffb7ef;
+}
+
+.flex-colunar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.text-bold {
+    font-weight: bold;
+    color: #ff4fc4;
+}
+
+.option {
+    padding: 8px;
+    border-radius: 12px;
+    background: #ffe3fa;
+    cursor: pointer;
+    display: inline-block;
+    transition: 0.2s;
+}
+
+.option:hover {
+    background: #ffc8f3;
+}
+
+.radio {
+    transform: scale(1.2);
+    accent-color: #ff4fc4;
+}
+
+.text-success-with-bg {
+    background-color: #c0ffcf !important;
+    color: #0b9c3f !important;
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.text-danger-with-bg {
+    background-color: #ffc0d1 !important;
+    color: #d6003d !important;
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.text-warning-with-bg {
+    background-color: #fff4c4 !important;
+    color: #c49600 !important;
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.text-new-gray {
+    opacity: 0.6;
+}
+
+/* títulos e textos */
+#spanQuestaoExibida {
+    font-size: 20px;
+    color: #ff4fc4;
+}
+
+#infoQuestao span,
+#infoAlternativas span {
+    color: #7b2c71;
+    font-weight: 500;
+}

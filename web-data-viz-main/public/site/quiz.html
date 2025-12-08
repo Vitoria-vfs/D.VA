@@ -1,179 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="quizz.css">
+    <title>Quiz da D.VA</title>
+    <link rel="stylesheet" href="./css/quiz.css">
 </head>
-<body>
-    <header>
-        <header class="menu">
-    <img src="c:\Users\User\Pictures\Screenshots\Captura de tela 2025-10-27 094125.png" class="logo" style="height:60px;">
-    <nav>
-        <a href="site/index.html">Início</a>
-        <a href="#">Personagem</a>
-        <a href="#">Sobre mim</a>
-        <a href="#">Contato</a>
-    </nav>
-    <button class="btn-cadastrar">Cadastrar-se</button>
-</header>
-        <h1>Quiz da D.VA!</h1>
-        <p>Teste seu conhecimento sobre a personagem D.VA</p>
-        <main>
-            <section>
-                <h2>1-Qual é o nome verdadeiro da D.VA?</h2>
-                <form>
-                    <input type="radio" value="Hanna" id="p1a" name="pergunta1">
-                    <label for="p1a">Hanna</label><br>
-                    <input type="radio" value="Elloy" id="p1b" name="pergunta1">
-                    <label for="p1a">Elloy</label><br>
-                    <input type="radio" value="Ada" id="p1c" name="pergunta1">
-                    <label for="p1a">Ada</label><br>
-                    <input type="radio" value="Lady" id="p1d" name="pergunta1">
-                    <label for="p1a">Lady</label><br>
+<body onload="onloadEsconder()">
+    <div id="pontuacaoEJogo">
+        <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
 
-                    <h2>2-Qual é o nome do seu Mecha?</h2>
-                <form>
-                    <input type="radio" value="Hanna" id="p2a" name="pergunta2">
-                    <label for="p2a">bT</label><br>
-                    <input type="radio" value="Elloy" id="p2b" name="pergunta2">
-                    <label for="p2b">Bamboubie</label><br>
-                    <input type="radio" value="Ada" id="p2c" name="pergunta2">
-                    <label for="p2c">Took</label><br>
-                    <input type="radio" value="Lady" id="p2d" name="pergunta2">
-                    <label for="p2ds">Porch</label><br>
-                </form>
+        <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
+            <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
+                <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
+                <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
+            </div>
+            <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
+                <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
+                    <span id="spanPontuacaoFinal">***</span>
+                </span>
+                <span id="msgFinal" class="width-fit-content">***</span>
+            </div>
+        </div>
 
-                <h2>3-A D.VA ja foi uma ex-gamer proficional?</h2>
-                <form>
-                    <input type="radio" value="Sim" id="p3a" name="pergunta3">
-                    <label for="p3a">Sim</label><br>
-                    <input type="radio" value="Não" id="p3b" name="pergunta3">
-                    <label for="p3a">Não</label><br>
-                   
-                </form>
+        <div id="jogo" class="width-fit-content flex-colunar border-secondary">
 
-                    <h2>4-Qual é o país de origem da personagem?</h2>
-                <form>
-                    <input type="radio" value="Hanna" id="p1a" name="pergunta4">
-                    <label for="p1a">França</label><br>
-                    <input type="radio" value="Elloy" id="p1a" name="pergunta4">
-                    <label for="p1a">Coreia do Sul</label><br>
-                    <input type="radio" value="Ada" id="p1a" name="pergunta4">
-                    <label for="p1a">EUA</label><br>
-                    <input type="radio" value="Lady" id="p1a" name="pergunta4">
-                    <label for="p1a">China</label><br>
-                </form>
+            <div id="infoQuestao" class="padding-8">
+                <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
+                    questões.</span>
+            </div>
 
-                    <h2>5-Qual é o nome do esquadrão que ela atua?</h2>
-                <form>
-                    <input type="radio" value="Hanna" id="p1a" name="pergunta5">
-                    <label for="p1a">bla</label><br>
-                    <input type="radio" value="Elloy" id="p1a" name="pergunta5">
-                    <label for="p1a">Cetor Nulo</label><br>
-                    <input type="radio" value="Ada" id="p1a" name="pergunta5">
-                    <label for="p1a">Overwatch</label><br>
-                    <input type="radio" value="Lady" id="p1a" name="pergunta5">
-                    <label for="p1a">MEKA</label><br>
-                    </form>
+            <div id="perguntaDaQuestaoAtual" class="padding-8">
+                <span id="spanQuestaoExibida" class="text-bold"></span>
+            </div>
 
-                    <h2>6-Qual foi a primeira aparicção da d.va no jogo?</h2>
-                <form>
-                    <input type="radio" value="Hanna" id="p1a" name="pergunta6">
-                    <label for="p1a">2000</label><br>
-                    <input type="radio" value="Elloy" id="p1a" name="pergunta6">
-                    <label for="p1a">2006</label><br>
-                    <input type="radio" value="Ada" id="p1a" name="pergunta6">
-                    <label for="p1a">2016</label><br>
-                    <input type="radio" value="Lady" id="p1a" name="pergunta6">
-                    <label for="p1a">2022</label><br>
-                </form>
+            <div id="infoAlternativas" class="padding-8">
+                <span><em>Escolha uma opção dentre as abaixo:</em></span>
+            </div>
 
-                    <h2>7-No jogo, qual é o titulo dado a personagem?</h2>
-                <form>
-                    <input type="radio" value="Hanna" id="p1a" name="pergunta7">
-                    <label for="p1a">Mercenaria</label><br>
-                    <input type="radio" value="Elloy" id="p1a" name="pergunta7">
-                    <label for="p1a">Vilã</label><br>
-                    <input type="radio" value="Ada" id="p1a" name="pergunta7">
-                    <label for="p1a">Anti-Heroi</label><br>
-                    <input type="radio" value="Lady" id="p1a" name="pergunta7">
-                    <label for="p1a">Heroi</label><br>
-                </form>
+            <div id="opcoes" class="flex-colunar padding-8">
+                <span>
+                    <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
+                    <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+                </span>
+                <span>
+                    <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
+                    <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+                </span>
+                <span>
+                    <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
+                    <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+                </span>
+                <span>
+                    <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
+                    <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+                </span>
+            </div>
 
-                    <h2>8-Qual é a fraze de efeito da personagem?</h2>
-                <form>
-                    <input type="radio" value="Hanna" id="p1a" name="pergunta8">
-                    <label for="p1a">O univerço canta pra mim</label><br>
-                    <input type="radio" value="Elloy" id="p1a" name="pergunta8">
-                    <label for="p1a">Ninguem se esconde da minha mira</label><br>
-                    <input type="radio" value="Ada" id="p1a" name="pergunta8">
-                    <label for="p1a">Pede pra nerfa noob</label><br>
-                    <input type="radio" value="Lady" id="p1a" name="pergunta8">
-                    <label for="p1a">Nucleo fundido</label><br>
-                    </form>
-                    <button onclick="registrarTentativa()">Finazir Quiz</button>
+            <div id="botoes" class="flex-colunar padding-8">
+                <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
+                <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
+                <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
+                <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
+            </div>
 
-                
+        </div>
+         <button onclick="desh()">Ver pontuação</button>
+    </div>
 
-            
-            </section>
-
-            <section>
-            </section>
-            <footer>
-
-            </footer>
-        </main>
-    </header>
-
+   
 </body>
+
 </html>
-
 <script>
-    function registrarTentativa(){
-        var resposta1 = 'resposta1';
-        var resposta2 = 'resposta2';
-        var resposta3 = 'resposta3';
-        var resposta4 = 'resposta4';
-        var resposta5 = 'resposta5';
-        var resposta6 = 'resposta6';
-        var resposta7 = 'resposta7';
-        var resposta8 = 'resposta8';
-        var fkUsuario = 1;
-        var contAcerto = 5;
 
+    const listaDeQuestoes = [
 
+        {
+            pergunta: "Qual é o nome verdadeiro da D.VA?",
+            alternativaA: "Hanna",
+            alternativaB: "Elloy",
+            alternativaC: "Ada",
+            alternativaD: "Lady",
+            alternativaCorreta: "alternativaA"
+        },
 
+        {
+            pergunta: "Qual é o nome do seu Mecha?",
+            alternativaA: "BT-7274",
+            alternativaB: "Bumblebee",
+            alternativaC: "Tokki",
+            alternativaD: "porsche",
+            alternativaCorreta: "alternativaC"
+        },
 
-        fetch("/tentativa/registrarTentativa", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        contAcertoServer: contAcerto,
-        fkUsuarioServer: fkUsuario
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
+        {
+            pergunta: "Qual é o país de origem da personagem?",
+            alternativaA: "França",
+            alternativaB: "Coreia do Sul",
+            alternativaC: "EUA",
+            alternativaD: "China",
+            alternativaCorreta: "alternativaB"
+        },
 
-        if (resposta.ok) {
-          console.log("Tentativa foi realizado com sucesso!");
+        {
+            pergunta: "Qual foi a primeira aparicção da d.va no jogo?",
+            alternativaA: "2000",
+            alternativaB: "2006",
+            alternativaC: "2016",
+            alternativaD: "2022",
+            alternativaCorreta: "alternativaC"
+        },
+
+        {
+            pergunta: "No jogo, qual é o titulo dado a personagem?",
+            alternativaA: "Mercenaria",
+            alternativaB: "Vilã",
+            alternativaC: "Anti-Heroi",
+            alternativaD: "Heroi",
+            alternativaCorreta: "alternativaD"
+        },
+
+        {
+            pergunta: "Qual é a frase de efeito da personagem?",
+            alternativaA: "O universo canta pra mim",
+            alternativaB: "Ninguem se esconde da minha mira",
+            alternativaC: "Pede pra nerfa noob",
+            alternativaD: "Herois nunca morrem",
+            alternativaCorreta: "alternativaC"
+        },
+
+        {
+            pergunta: "Qual é o nome do esquadrão que ela atua?",
+            alternativaA: "Spark",
+            alternativaB: "Setor Nulo",
+            alternativaC: "Overwatch",
+            alternativaD: "MEKA",
+            alternativaCorreta: "alternativaD"
         }
-        else {
-          throw "Houve um erro ao tentar realzar o registro"
+
+    ]
+
+    // variáveis globais    
+    let numeroDaQuestaoAtual = 0
+    let pontuacaoFinal = 0
+    let tentativaIncorreta = 0
+    let certas = 0
+    let erradas = 0
+    let quantidadeDeQuestoes = listaDeQuestoes.length
+     var id = sessionStorage.ID_USUARIO 
+     if(!id){
+         window.location = "./login.html";
+     }
+    // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
+
+    function onloadEsconder() {
+        document.getElementById('pontuacao').style.display = "none"
+        document.getElementById('jogo').style.display = "none"
+        verificarTentativa();
+    }
+
+    function iniciarQuiz() {
+        document.getElementById('pontuacao').style.display = "flex"
+        document.getElementById('jogo').style.display = "flex"
+        document.getElementById('btnIniciarQuiz').style.display = "none"
+
+        document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
+
+        preencherHTMLcomQuestaoAtual(0)
+
+        btnSubmeter.disabled = false
+        btnProx.disabled = true
+        // btnConcluir.disabled = true
+        btnTentarNovamente.disabled = true
+    }
+
+    function preencherHTMLcomQuestaoAtual(index) {
+        habilitarAlternativas(true)
+        const questaoAtual = listaDeQuestoes[index]
+        numeroDaQuestaoAtual = index
+        console.log("questaoAtual")
+        console.log(questaoAtual)
+        document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = Number(index) + 1 // ajustando porque o index começa em 0
+        document.getElementById("spanQuestaoExibida").innerHTML = questaoAtual.pergunta;
+        document.getElementById("labelOpcaoUm").innerHTML = questaoAtual.alternativaA;
+        document.getElementById("labelOpcaoDois").innerHTML = questaoAtual.alternativaB;
+        document.getElementById("labelOpcaoTres").innerHTML = questaoAtual.alternativaC;
+        document.getElementById("labelOpcaoQuatro").innerHTML = questaoAtual.alternativaD;
+    }
+
+    function submeter() {
+        const options = document.getElementsByName("option"); // recupera alternativas no html
+
+        let hasChecked = false
+        for (let i = 0; i < options.length; i++) {
+            if (options[i].checked) {
+                hasChecked = true
+                break
+            }
         }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
 
-    return false;
+        if (!hasChecked) {
+            alert("Não há alternativas escolhidas. Escolha uma opção.")
+        } else {
+            btnSubmeter.disabled = true
+            btnProx.disabled = false
 
+            habilitarAlternativas(false)
+
+            checarResposta()
+        }
+    }
+
+    function habilitarAlternativas(trueOrFalse) {
+        let opcaoEscolhida = trueOrFalse ? false : true
+
+        primeiraOpcao.disabled = opcaoEscolhida
+        segundaOpcao.disabled = opcaoEscolhida
+        terceiraOpcao.disabled = opcaoEscolhida
+        quartaOpcao.disabled = opcaoEscolhida
+
+    }
+
+    function avancar() {
+        btnProx.disabled = true
+        btnSubmeter.disabled = false
+
+        desmarcarRadioButtons()
+
+        if (numeroDaQuestaoAtual < quantidadeDeQuestoes - 1) {
+            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
+        } else if (numeroDaQuestaoAtual == quantidadeDeQuestoes - 1) {
+            alert("Atenção... a próxima é a ultima questão!")
+            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
+        } else {
+            finalizarJogo()
+        }
+        limparCoresBackgroundOpcoes()
+    }
+
+    function tentarNovamente() {
+        // atualiza a página
+        window.location.reload()
+    }
+
+    function checarResposta() {
+        const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual] // questão atual 
+        const respostaQuestaoAtual = questaoAtual.alternativaCorreta // qual é a resposta correta da questão atual
+
+        const options = document.getElementsByName("option"); // recupera alternativas no html
+
+        let alternativaCorreta = null // variável para armazenar a alternativa correta
+
+        options.forEach((option) => {
+            if (option.value === respostaQuestaoAtual) {
+                console.log("alternativaCorreta está no componente: " + alternativaCorreta)
+                alternativaCorreta = option.labels[0].id
+            }
+        })
+
+        // verifica se resposta assinalada é correta
+        options.forEach((option) => {
+            if (option.checked === true && option.value === respostaQuestaoAtual) {
+                document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
+                pontuacaoFinal++
+                certas++
+                document.getElementById("spanCertas").innerHTML = certas
+                numeroDaQuestaoAtual++
+            } else if (option.checked && option.value !== respostaQuestaoAtual) {
+                const wrongLabelId = option.labels[0].id
+
+                document.getElementById(wrongLabelId).classList.add("text-danger-with-bg")
+                document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
+                tentativaIncorreta++
+                erradas++
+                document.getElementById("spanErradas").innerHTML = erradas
+                numeroDaQuestaoAtual++
+            }
+        })
+    }
+
+    function limparCoresBackgroundOpcoes() {
+        const options = document.getElementsByName("option");
+        options.forEach((option) => {
+            document.getElementById(option.labels[0].id).classList.remove("text-danger-with-bg")
+            document.getElementById(option.labels[0].id).classList.remove("text-success-with-bg")
+        })
+    }
+
+    function desmarcarRadioButtons() {
+        const options = document.getElementsByName("option");
+        for (let i = 0; i < options.length; i++) {
+            options[i].checked = false;
+        }
+    }
+
+    function finalizarJogo() {
+        let textoParaMensagemFinal = null
+        let classComCoresParaMensagemFinal = null
+        const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
+
+        if (porcentagemFinalDeAcertos <= 0.3) {
+            textoParaMensagemFinal = "Parece que você não estudou..."
+            classComCoresParaMensagemFinal = "text-danger-with-bg"
+        }
+        else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
+            textoParaMensagemFinal = "Pode melhorar na próxima, hein!"
+            classComCoresParaMensagemFinal = "text-warning-with-bg"
+        }
+        else if (porcentagemFinalDeAcertos >= 0.9) {
+            textoParaMensagemFinal = "Uau, parabéns!"
+            classComCoresParaMensagemFinal = "text-success-with-bg"
+        }
+
+        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
+
+
+        document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
+        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
+        document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
+
+        document.getElementById('jogo').classList.add("text-new-gray")
+
+        btnProx.disabled = true
+        btnSubmeter.disabled = true
+        // btnConcluir.disabled = true
+        var idUsuario = sessionStorage.ID_USUARIO;
+        var idTentativa = sessionStorage.TENTATIVA;
+        var tentativa = 0;
+        var quiz = 1;
+        console.log(certas, erradas, id, tentativa, quiz)
+        if(idTentativa == "null" || idTentativa == undefined || idTentativa == NaN){
+            tentativa++
+        }else{
+            tentativa = Number(idTentativa) + 1;
+        }
+
+
+            fetch(`/tentativa/registrarTentativa`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    certas: certas,
+                    erradas: erradas,
+                    fkUsuarioServer: idUsuario,
+                    idTentativa: tentativa,
+                    fkQuiz: quiz
+                }),
+            })
+                .catch(err => {
+                    console.log(err);
+                })
+
+    }
+
+    function verificarTentativa(){
+                btnTentarNovamente.disabled = false
+
+        var emailServer = sessionStorage.EMAIL_USUARIO;
+        var senhaServer = sessionStorage.SENHA;
         
+        fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: emailServer,
+                    senhaServer: senhaServer
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
 
+                if (resposta.ok) {
+
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.TENTATIVA = json.idTentativa;
+                        
+                    });
+
+                } else {
+
+                    console.log("Houve um erro ao tentar realizar o login!");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+    }
+
+    function desh(){
+         window.location = "./dashboard.html";
     }
 </script>

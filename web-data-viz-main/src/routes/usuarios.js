@@ -12,4 +12,9 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+
+router.get("/montarDash/:idUsuario", function (req, res) {
+    usuarioController.montarDash(req, res);
+})
+
 module.exports = router;

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<body onload="montarDash()">
+    <div class="conteiner-geral">
+        
+        <aside class="barra-lateral">
+            <div class="logo-area">
+                <div class="icone-logo"></div>
+                <h1>Dashboard</h1>
+            </div>
+
+            <nav class="menu-navegacao">
+                <ul>
+                    <li class="item-menu ativo">
+                        <div class="indicador-lateral"></div>
+                        <a href="#">Opções</a>
+                    </li>
+                     <div class="lado-direito">
+                    <div class="perfil-usuario">
+                        <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                        <span>Vitoria</span>
+                        <i class="fa-solid fa-caret-down setinha"></i>
+                    </div>
+                </div>
+                    <li class="item-menu"><a href="#"><i class="fa-solid fa-fire"></i>Gráfico</a></li>
+                </ul>
+            </nav>
+
+            <div class="menu-inferior">
+                <ul>
+                    <li class="item-menu"><a href="#"><i class="fa-solid fa-gear"></i>Pontuação</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="area-principal">
+            
+            <header class="cabecalho">
+                <i class="fa-solid fa-caret-down setinha"></i>
+                    <button class="botao-adicionar"><i class="fa-solid fa-plus"></i></button>
+
+            </header>
+
+            <div class="dashboard-corpo">
+        
+                <div class="grid-superior">
+                    
+                    <div class="cartao cartao-grafico-grande">
+                        <div class="cabecalho-cartao">
+
+                    </div>
+
+                    <div class="grid-mini-cartoes">
+                        
+                        <div class="cartao cartao-gradiente">
+                            <div class="topo-cartao">
+                                <div class="icone-fundo-claro"><i class="fa-solid fa-chart-simple"></i></div>
+                            </div>
+                            <div class="conteudo-meio">
+                                <h3 id="porcent">42%</h3>
+                                <p>Porcentagem por tentativa</p>
+                            </div>
+                            <i class="fa-solid fa-circle-question icone-flutuante"></i>
+                    
+                            <i class="fa-solid fa-circle-question icone-flutuante-cinza"></i>
+                        </div>
+                        <div class="cartao cartao-branco">
+                            <div class="icone-box roxo-claro"><i class="fa-solid fa-hourglass-half"></i></div>
+                            <div class="info-esquerda">
+                                <h3 id="qtdTentativas">3</h3>
+                                <p>Quantidade de tentativas</p>
+                            </div>
+                        </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="grid-inferior">
+                    
+                    <div class="cartao cartao-trafego">
+                        <h3>Gráfico de acertos e erros</h3>
+                        <div class="conteudo-trafego">
+                            <div class="tabela-legenda">
+                                <div class="linha-cabecalho">
+                                    <span></span>
+                                </div>
+                                <div class="linha-item">
+                                    <div class="nome-fonte"><span class="ponto azul"></span> Acertos</div>
+                                    <div class="valor-fonte" id="id_acertos">4</div>
+                                </div>
+                                <div class="linha-item">
+                                    <div class="nome-fonte"><span class="ponto roxo"></span> Erros</div>
+                                    <div class="valor-fonte" id="id_erros">3</div>
+                                </div>
+                            </div>
+                            <div class="area-grafico-donut">
+                                <canvas id="graficoDonut1"></canvas>
+                                <div class="texto-centro-donut">
+                                    <h4 id="porcent_grafico">45%</h4>
+                                    <small>Alternativas corretas</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                           
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        var dados = [];
+        function montarDash() {
+    var idUsuario = sessionStorage.ID_USUARIO;
+
+    fetch(`/usuarios/montarDash/${idUsuario}`, { cache: "no-store" })
+        .then(function (resposta) {
+            
+            if (resposta.ok) {
+                
+                const contentType = resposta.headers.get("content-type");
+                if (!contentType || !contentType.includes("application/json")) {
+                    console.log("Response was OK, but not JSON or empty body.");
+                  
+                    return {};
+                }
+
+               
+                return resposta.json().then(function (respostaJson) {
+                    console.log(`Dados recebidos:, ${JSON.stringify(respostaJson)}`);
+                   
+                    console.log(respostaJson);
+
+                    let acertos = respostaJson[0].qtdAcertos;
+                    let erros = respostaJson[0].qtdErros;
+                    let ultimaTentativa = respostaJson[0].ultimaTentativa;
+                    let porcentagemAcertos = (acertos / 7 * 100).toFixed(1)
+                    // 7 = 100%
+                    console.log(acertos, erros, ultimaTentativa, porcentagemAcertos)
+
+                    document.getElementById("porcent").textContent = `${porcentagemAcertos}%`
+                    document.getElementById("qtdTentativas").textContent = ultimaTentativa
+                    document.getElementById("id_acertos").textContent = acertos
+                    document.getElementById("id_erros").textContent = erros
+                    document.getElementById("porcent_grafico").textContent = `${porcentagemAcertos}%`
+                    dados.push(acertos, erros)
+                    montarGrafico();
+                });
+            } else {
+                
+                console.error(`Nenhum dado encontrado. Status: ${resposta.status}`);
+               
+                throw new Error(`Request failed with status ${resposta.status}`);
+            }
+        })
+        .catch(function (error) {
+            
+            console.error(`Erro ao obter dados: ${error.message}`);
+           
+        });
+}
+
+       
+
+function montarGrafico(){
+
+    const dadosDonut = {
+            labels: ['Direct', 'Search'],
+            datasets: [{
+                data: dados,
+                backgroundColor: ['#6AD2FF', '#D68BFD'], // Ciano e Roxo
+                hoverOffset: 4,
+                borderWidth: 0,
+                cutout: '75%', // Espessura do donut
+                borderRadius: 20
+            }]
+        };
+
+        const opcoesDonut = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: { enabled: false }
+            }
+        };
+
+        // Renderizar Donut 1
+        new Chart(document.getElementById('graficoDonut1'), {
+            type: 'doughnut',
+            data: dadosDonut,
+            options: opcoesDonut
+        });
+
+        // Renderizar Donut 2
+        new Chart(document.getElementById('graficoDonut2'), {
+            type: 'doughnut',
+            data: dadosDonut,
+            options: opcoesDonut
+        });
+
+}      
+        
+    </script>
+</body>
+</html>

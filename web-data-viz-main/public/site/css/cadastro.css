@@ -1,0 +1,138 @@
+/* RESET  */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+body{
+    background:#000;
+    color:#fff;
+    overflow-x:hidden;
+}
+a{
+    text-decoration:none;
+    color:#ffffff;
+}
+
+/* HEADER */
+header{
+    width:100%;
+    height: 20vh;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:#00000035;
+    position:fixed;
+    top:0;
+    z-index:999;
+    border-bottom:1px solid #fff4;
+}
+header nav a{
+    margin:0 15px;
+    font-size:20px;
+    transition:.3s;
+}
+header nav a:hover{
+    color:#ff79c6;
+}  
+
+body {
+    background-image: url(../img_projeto/download\ \(1\).jpeg);
+    background-size: cover;
+    
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+   
+}
+.left  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     width: 450px;
+    height: 450px;
+    flex-direction: column;
+    margin: 18% 0 30% 20%;
+    
+}
+.left h1 {
+    margin-bottom: 10%;
+    color: #fff;
+}
+
+
+.col input {
+    width: 200px;
+    padding: 13px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #fff;
+    outline: none;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    backdrop-filter: blur(4px);
+    transition: 0.3s;
+}
+
+/* Efeito ao clicar/hover */
+.col input:focus {
+    border-color: #ff79c6;
+    box-shadow: 0 0 10px #ff79c6;
+}
+
+.col input::placeholder {
+    color: #fff;
+}
+
+.col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Botão */
+.btn {
+    background: #ff5fbf;
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    margin: 6%;
+    border-radius: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 10px #ff5fbf;
+}
+
+.btn:hover {
+    background: #ff2fae;
+    box-shadow: 0 0 20px #ff2fae;
+}
+
+.right {
+    width: 50%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem preencher todo o espaço */
+    object-position: center;
+}
+

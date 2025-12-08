@@ -1,5 +1,4 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
 const { buscarEstudosPorUsuario } = require("../controllers/tentativaController");
 
 function autenticar(req, res) {
@@ -19,9 +18,10 @@ function autenticar(req, res) {
 
                 if (resultadoAutenticar.length == 1) {
                     res.json({
-                        id: resultadoAutenticar[0].id,
+                        id: resultadoAutenticar[0].idUsuario,
                         email: resultadoAutenticar[0].email,
                         nome: resultadoAutenticar[0].nome,
+                        idTentativa: resultadoAutenticar[0].tentativa,
                         senha: resultadoAutenticar[0].senha
                     });
                 } else if (resultadoAutenticar.length == 0) {
@@ -66,8 +66,26 @@ function cadastrar(req, res) {
     }
 }
 
+
+function montarDash(req, res){
+    var idUsuario = req.params.idUsuario;
+
+    usuarioModel.montarDash(idUsuario).then((resultado) => {
+        if(resultado.length > 0){
+            res.status(200).send(resultado)
+        }else {
+            res.status(204).json([]);
+        }
+    }).catch(function (erro){
+        console.log(erro);
+        console.log("Erro ao adquirir dados", erro.sqlMessage)
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
 module.exports = {
     autenticar,
     cadastrar,
+    montarDash,
     buscarEstudosPorUsuario
 };
